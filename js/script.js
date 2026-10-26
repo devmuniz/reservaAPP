@@ -284,7 +284,7 @@ function profForm() {
     $('#pf').onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { const z = 128, cv = document.createElement('canvas'); cv.width = cv.height = z; const s = Math.min(im.width, im.height); cv.getContext('2d').drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, z, z); pend = cv.toDataURL('image/jpeg', .8); $('#er').textContent = 'Foto carregada. Toque em Salvar.' }; im.src = r.result }; r.readAsDataURL(f) };
     $('#pr').onclick = () => { pend = ''; $('#er').textContent = 'Foto removida. Toque em Salvar.' }
 }
-const SB_URL = 'COLE_AQUI_A_URL_DO_PROJETO', SB_KEY = 'COLE_AQUI_A_ANON_KEY', POLICY_V = '1';
+const SB_URL = 'https://reserva-financeira.vercel.app/', SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNic3l0dGtxem5wbGJ2bmRoeGtrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2Mjk2MTgsImV4cCI6MjEwODIwNTYxOH0.Tjt_5XBNHMpFoS3bPOknyDaPmtMNW5Ca867N_S934qg', POLICY_V = '1';
 const sb = (SB_URL.startsWith('https://') && window.supabase) ? supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } }) : null;
 const AUTHS = ['auth', 'recover', 'force', 'consent'];
 let authMode = 'in', authMsg = '';
